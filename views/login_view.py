@@ -1,15 +1,20 @@
 import flet as ft
-import sqlite3
+from utils.utils import create_app_bar
 
-
-class Login:
-    def __init__(self, page: ft.Page, navigate):
+class LoginView:
+    def __init__(self, page: ft.Page, on_login, on_signup, go_back):
         self.page = page
-        self.navigate = navigate
+        self.on_login = on_login
+        self.on_signup = on_signup
+        self.on_back = go_back
         self.setup_page()
-        self.loginPage()
+        self.login_page_ui()
+        self.app_bar = create_app_bar("Login", go_back)
+        #print(create_app_bar("Login", on_back))
+        self.page.add(self.app_bar)
 
     def setup_page(self):
+        self.page.controls.clear()
         self.page.bgcolor = ft.colors.WHITE
         self.page.window_width = 350
         self.page.window_height = 450
@@ -17,22 +22,10 @@ class Login:
         self.page.window_always_on_top = True
         self.page.title = 'Login'
         self.page.vertical_alignment = ft.MainAxisAlignment.CENTER
-        self.page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-
-    def __entrar(self, e, usuario, senha):
-        if usuario == "" or senha == "":
-            print("As informações de login e senha devem ser preenchidas")
-        else:
-            # Fazer verificações do banco de dados
-            pass
-
-    def cadastrarUsuario(self, e):
-       self.navigate("/signup")
-
+        self.page.horizontal_alignment = ft.CrossAxisAlignment.CENTER  
+        self.page.update()
         
-    def loginPage(self):
-        self.page.controls.clear()
-
+    def login_page_ui(self):
         lb_login = ft.Text(
             "Autenticação de usuário",
             size=12,
@@ -58,17 +51,18 @@ class Login:
 
         bt_login = ft.ElevatedButton(
             "Login",
-            on_click=lambda e: self.__entrar(e, tf_usuario.value, tf_senha.value),
+            on_click=lambda e: self.on_login(tf_usuario.value, tf_senha.value),
             width=120,
             height=50
         )
 
         bt_criar = ft.TextButton(
             "Cadastrar-se",
-            on_click=lambda e: self.cadastrarUsuario(e),
+            on_click=lambda _: self.on_signup(),
             width=120,
             height=50
         )
 
         self.page.add(lb_login, tf_usuario, tf_senha, bt_login, bt_criar)
         self.page.update()
+
