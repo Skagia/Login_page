@@ -18,6 +18,7 @@ class App:
             self.history.append(route)  # Add the route to the history
             controller_class = self.route_to_controller[route]
             controller = controller_class(self.page, self)
+            print(controller)
             print(route)
         else:
             print("Route not found:", route)
@@ -29,7 +30,6 @@ class App:
             self.history.pop()  # Remove current page from history
             previous_route = self.history[-1]
             self.navigate(previous_route)
-            
         else:
             print("No previous page in history")
 

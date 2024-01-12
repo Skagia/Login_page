@@ -7,6 +7,7 @@ class LoginView:
         self.on_login = on_login
         self.on_signup = on_signup
         self.on_back = go_back
+        self.page.window_resizable=False
         self.setup_page()
         self.login_page_ui()
         self.app_bar = create_app_bar("Login", go_back)

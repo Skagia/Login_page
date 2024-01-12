@@ -1,13 +1,14 @@
 import flet as ft
 from utils.utils import create_app_bar
 class SignUpView:
-    def __init__(self, page: ft.Page, on_signup, on_back):
+    def __init__(self, page: ft.Page, on_signup, go_back):
         self.page = page
         self.on_signup = on_signup
-        self.on_back = on_back
+        self.on_back = go_back
+        self.page.window_resizable=False
         self.setup_page()
         self.signup_page_ui()
-        self.page.add(create_app_bar("Login", on_back))
+        self.page.add(create_app_bar("Sign Up", go_back))
 
     def setup_page(self):
         self.page.bgcolor = ft.colors.WHITE
