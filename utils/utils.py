@@ -1,8 +1,8 @@
 import flet as ft
 
 def create_app_bar(title, go_back):
-    bt_back = ft.ElevatedButton(
-            "Login",
+    bt_back = ft.IconButton(
+            icon=ft.icons.ARROW_BACK,
             on_click=go_back,
             width=120,
             height=50
