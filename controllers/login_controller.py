@@ -9,7 +9,8 @@ class LoginController:
         self.view = LoginView(page, self.handle_login, self.go_to_signup, self.app.go_back)
 
     def handle_login(self, username, password):
-       print(f"Voce está tentando logar com o usuário {username} e senha {password}")
+       if username == "" or password == "":
+        print("Insira ao menos um usuário válido")
        
     def go_to_signup(self):
         self.app.navigate("/signup")

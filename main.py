@@ -1,6 +1,7 @@
 import flet as ft
 from controllers.login_controller import LoginController
 from controllers.signup_controller import SignUpController
+import sqlite3
 
 class App:
     def __init__(self, page: ft.Page):

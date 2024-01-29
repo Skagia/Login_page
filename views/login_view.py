@@ -17,7 +17,7 @@ class LoginView:
         self.page.controls.clear()
         self.page.bgcolor = ft.colors.WHITE
         self.page.window_width = 350
-        self.page.window_height = 450
+        self.page.window_height = 600
         self.page.window_resizable = False
         self.page.window_always_on_top = True
         self.page.title = 'Login'
@@ -36,6 +36,7 @@ class LoginView:
         tf_usuario = ft.TextField(
             label='Usuário',
             hint_text='Usuário',
+            height=40,
             text_size=12,
             color=ft.colors.BLACK,
         )
@@ -44,6 +45,7 @@ class LoginView:
             label='Senha',
             hint_text='Senha',
             text_size=12,
+            height=40,
             color=ft.colors.BLACK,
             password=True,
             can_reveal_password=True
@@ -52,15 +54,15 @@ class LoginView:
         bt_login = ft.ElevatedButton(
             "Login",
             on_click=lambda e: self.on_login(tf_usuario.value, tf_senha.value),
-            width=120,
-            height=50
+            width=100,
+            height=40,
         )
 
         bt_criar = ft.TextButton(
             "Cadastrar-se",
             on_click=lambda _: self.on_signup(),
             width=120,
-            height=50
+            height=40
         )
 
         self.page.add(lb_login, tf_usuario, tf_senha, bt_login, bt_criar)
